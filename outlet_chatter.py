@@ -13,13 +13,15 @@ class OutletChatter:
         with open("IdLog.txt") as File:
             Data = File.readlines()
 
-        return Data[-1]
+        Data = Data[-1].split(' ')
+        return Data[1]
 
     def GetOffId(self):
         with open("IdLog.txt") as File:
             Data = File.readlines()
 
-        return Data[-1]
+        Data = Data[-1].split(' ')
+        return Data[1]
     
     #on/off duh!
     def TurnOnOutlet(self, OutletId):
