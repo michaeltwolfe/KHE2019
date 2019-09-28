@@ -1,11 +1,37 @@
+  
 from flask import Flask, render_template, request, make_response, redirect
-
+import storage
+from outlet_chatter import OutletChatter
 
 app = Flask(__name__)
 
-@app.route("/toggle-zone")
-def toggle_zone():
-    return render_template("toggle_zone.html")
+@app.route("/add-off", methods=['GET', 'POST'])
+def add_off():
+    if request.method == "GET":
+        Response = make_response(render_template("add_off.html"))
+        return Response
+    elif request.method == "POST":
+        Chatter = OutletChatter()
+        OffId = Chatter.GetOffId()
+        
+        storage.AddOffId(OffId)
+
+        Response = make_response(redirect("/add-off"))
+        return Response
+
+@app.route("/add-on", methods=['GET', 'POST'])
+def add_on():
+    if request.method == "GET":
+        Response = make_response(render_template("add_on.html"))
+        return Response
+    elif request.method == "POST":
+        Chatter = OutletChatter()
+        OnId = Chatter.GetOnId()
+        
+        storage.AddOnId(OnId)
+
+        Response = make_response(redirect("/add-off"))
+        return Response
 
 @app.route("/add-zone", methods=['GET', 'POST'])
 def add_zone():
@@ -15,18 +41,21 @@ def add_zone():
     elif request.method == "POST":
         ZoneName = request.form.get("zonename")
 
-        print(ZoneName)
+        AddZone = storage.AddZone(ZoneName)
 
-        Message = "Zone was successfully added."
-        Response = make_response(render_template("add_zone.html", Message=Message))
+        if AddZone is True:
+            Response = make_response(redirect("/"))
+        else:
+            Message = "Zone was not successfully added."
+            Response = make_response(render_template("add_zone.html", Message=Message))
 
         return Response
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
-    if request.method == 'GET':
+    if request.method == "GET":
         return render_template('index.html')
-    elif request.method == 'POST':
+    elif request.method == "POST":
         values = request.form.getlist("OnOffSwitch")
         for item in values:
             print(item)
