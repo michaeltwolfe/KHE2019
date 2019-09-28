@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="/static/index.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
 </head>
 
  <body id="overrides">
@@ -28,10 +29,134 @@
 <br><br>
 
 <main>
+  <form action="#" method="POST">
   <div class="container">
-      <h1>This is a test</h1>
+    <h6>Zone 5</h6>
+    <div class="card">
+      <table>
+        <tr class="card-body">
+          <td class="card-title">Reading Lamp</td>
+        </tr>
+        <tr class="card-body">
+          <td class="card-text">
+              <label class="switch">
+              <input type="checkbox" class="checkboxZone5" name="OnOffSwitch" id="ReadingLamp" value="ReadingLamp">
+              <span class="slider round"></span>
+              </label>
+          </td>
+        </tr>
+        <tr class="card-body">
+            <td class="card-title">Radio</td>
+        </tr>
+          <tr class="card-body">
+            <td class="card-text">
+                <label class="switch">
+                <input type="checkbox" class="checkboxZone5" name="OnOffSwitch" id="Radio" value="Radio">
+                <span class="slider round"></span>
+                </label>
+            </td>
+          </tr>
+      </table>
+    </div>
+    <br>
+    <h7>All In Zone</h7>
+      <label class="switch">
+          <input type="checkbox" id="checkallZone5">
+          <span class="slider round"></span>
+          </label>
+          <script type='text/javascript'>
+            $(document).ready(function(){
+              // Check or Uncheck All checkboxes
+              $("#checkallZone5").change(function(){
+                var checked = $(this).is(':checked');
+                if(checked){
+                  $(".checkboxZone5").each(function(){
+                    $(this).prop("checked",true);
+                  });
+                }else{
+                  $(".checkboxZone5").each(function(){
+                    $(this).prop("checked",false);
+                  });
+                }
+              });
+            
+             // Changing state of CheckAll checkbox 
+             $(".checkbox").click(function(){
+            
+               if($(".checkboxZone5").length == $(".checkboxZone5:checked").length) {
+                 $("#checkallZone5").prop("checked", true);
+               } else {
+                 $("#checkallZone5").removeAttr("checked");
+               }
+           
+             });
+           });
+           </script>     
+
+    <br><br><br><br>
+    <h6>Zone 2</h6>
+    <div class="card">
+      <table>
+        <tr class="card-body">
+          <td class="card-title">Candle</td>
+        </tr>
+        <tr class="card-body">
+          <td class="card-text">
+              <label class="switch">
+              <input type="checkbox" class="checkboxZone2" name="OnOffSwitch" id="Candle" value="Candle">
+              <span class="slider round"></span>
+              </label>
+          </td>
+        </tr>
+        <tr class="card-body">
+            <td class="card-title">Boombox</td>
+        </tr>
+          <tr class="card-body">
+            <td class="card-text">
+                <label class="switch">
+                <input type="checkbox" class="checkboxZone2" name="OnOffSwitch" id="Boombox" value="Boombox">
+                <span class="slider round"></span>
+                </label>
+            </td>
+          </tr>
+      </table>
+    </div>
+    <br>
+    <h7>All In Zone</h7>
+      <label class="switch">
+          <input type="checkbox" id="checkallZone2">
+          <span class="slider round"></span>
+          </label>      
   </div>
-  
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      // Check or Uncheck All checkboxes
+      $("#checkallZone2").change(function(){
+        var checked = $(this).is(':checked');
+        if(checked){
+          $(".checkboxZone2").each(function(){
+            $(this).prop("checked",true);
+          });
+        }else{
+          $(".checkboxZone2").each(function(){
+            $(this).prop("checked",false);
+          });
+        }
+      });
+    
+     // Changing state of CheckAll checkbox 
+     $(".checkboxZone2").click(function(){
+    
+       if($(".checkboxZone2").length == $(".checkboxZone2:checked").length) {
+         $("#checkallZone2").prop("checked", true);
+       } else {
+         $("#checkallZone2").removeAttr("checked");
+       }
+   
+     });
+   });
+   </script>
+   </form>
 </main>
 
 </body>
