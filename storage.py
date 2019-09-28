@@ -53,3 +53,19 @@ def GetZones():
         ZonesList.append(Item.name)
 
     return ZonesList
+
+
+def GetLandingPageInformation():
+    ZonesList = GetZones()
+
+    for Item in ZonesList:
+        ZoneId = session.query(Zone).filter(Zone.name == Item)
+
+        Outlets = session.query(Outlet).filter(Outlet.ID == ZoneId)
+
+        ZoneDict = {
+            "zone": Item,
+            "zoneOutlets": Outlets
+        }
+        
+        return ZoneDict

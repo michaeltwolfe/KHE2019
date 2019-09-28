@@ -18,9 +18,5 @@
 }
 
 body {
-    background:
-        linear-gradient(135deg, #a8b0b8 21px, #a8b0b8 22px, #f4faff 24px, transparent 24px, transparent 67px, #f4faff 67px, #a8b0b8 69px, transparent 69px),
-        linear-gradient(225deg, #a8b0b8 21px, #a8b0b8 22px, #f4faff 24px, transparent 24px, transparent 67px, #f4faff 67px, #a8b0b8 69px, transparent 69px)0 64px;
-    background-color:#a8b0b8;
-    background-size: 64px 128px;
+    background-image: url("/static/bambooWeave.jpg");
 }
