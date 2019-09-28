@@ -3,18 +3,30 @@ from flask import Flask, render_template, request, make_response, redirect
 import storage
 from outlet_chatter import OutletChatter
 
+
 app = Flask(__name__)
+
+"""""
+
+Routes to set up zones and outlets
+
+"""""
 
 @app.route("/add-off", methods=['GET', 'POST'])
 def add_off():
     if request.method == "GET":
-        Response = make_response(render_template("add_off.html"))
+        Zones = storage.GetZones()
+
+        Response = make_response(render_template("add_off.html", Zones=Zones))
         return Response
     elif request.method == "POST":
+        OutletName = request.form.get("outletname")
+        OffSelect = request.form.get("addoff")
+
         Chatter = OutletChatter()
         OffId = Chatter.GetOffId()
         
-        storage.AddOffId(OffId)
+        storage.AddOffId(OffSelect, OffId, OutletName)
 
         Response = make_response(redirect("/add-off"))
         return Response
@@ -22,13 +34,18 @@ def add_off():
 @app.route("/add-on", methods=['GET', 'POST'])
 def add_on():
     if request.method == "GET":
-        Response = make_response(render_template("add_on.html"))
+        Zones = storage.GetZones()
+
+        Response = make_response(render_template("add_on.html", Zones=Zones))
         return Response
     elif request.method == "POST":
+        OutletName = request.form.get("outletname")
+        OnSelect = request.form.get("addon")
+
         Chatter = OutletChatter()
         OnId = Chatter.GetOnId()
         
-        storage.AddOnId(OnId)
+        storage.AddOnId(OnSelect, OnId, OutletName)
 
         Response = make_response(redirect("/add-off"))
         return Response
@@ -41,13 +58,9 @@ def add_zone():
     elif request.method == "POST":
         ZoneName = request.form.get("zonename")
 
-        AddZone = storage.AddZone(ZoneName)
+        storage.AddZone(ZoneName)
 
-        if AddZone is True:
-            Response = make_response(redirect("/"))
-        else:
-            Message = "Zone was not successfully added."
-            Response = make_response(render_template("add_zone.html", Message=Message))
+        Response = make_response(redirect("/"))
 
         return Response
 
