@@ -1,0 +1,32 @@
+#overrides .navbar-brand {
+    transform: scale(1.5);
+    margin-left: 45px;
+    font-weight: bold;
+    font-family: harrington;
+}
+
+.navbar {
+    background-color: white;
+}
+
+.container{
+    background-color: white;
+    overflow: hidden;
+    padding-top: 15px;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+body {
+    background-image: url(/static/bambooWeave.jpg);
+}
+
+main {
+    background-color: #003742;
+    /* margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 30px; */
+    margin: 1px 90px 50px 90px;
+    padding: 15px 15px;
+}
