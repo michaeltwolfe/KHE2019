@@ -9,12 +9,12 @@ engine = create_engine("mysql://root@localhost/KHE2019")
 
 Base = declarative_base(engine)
 
-class Outlet(Base):
-    __tablename__ = "Outlet"
-    __table_args__ = {"autoload": True}
-
 class Zone(Base):
     __tablename__ = "Zone"
+    __table_args__ = {"autoload": True}
+
+class Outlet(Base):
+    __tablename__ = "Outlet"
     __table_args__ = {"autoload": True}
 
 class Weekly(Base):
