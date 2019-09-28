@@ -9,16 +9,16 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </head>
     <body>
-            <header>
-                    <nav class="navbar navbar-expand-sm navbar-light">   
-                        <a class="navbar-brand" href="/" id="logo">Outlet Control Center</a>
-                          <div class="collapse navbar-nav navbar-collapse" id="navbarNav">
+        <header>
+                <nav class="navbar navbar-expand-sm navbar-light">   
+                    <a class="navbar-brand" href="/" id="logo">Outlet Control Center</a>
+                        <div class="collapse navbar-nav navbar-collapse" id="navbarNav">
                             <ul class="nav ml-auto">
                               <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#">Toggle Zone Outlets</a>
+                                <a class="nav-link" href="add-on">Add An Outlet</a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="/add-zone">Add A Zone</a>
@@ -27,12 +27,22 @@
                           </div>
                     </nav>
                 </header>
+
+                <br>
+
         <main>
             <div class="container">
-                    <hi>Click the "off" button on the remote for the corresponding outlet.</hi>
-                    <form action="/add-off" method="post">
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </form>
+                <label>Select the zone the outlet should be added to:</label>
+                <select>
+                    <option>Select a Zone</option>
+                </select>
+
+                <br>
+
+                <hi>Click the "off" button on the remote for the corresponding outlet.</hi>
+                <form action="/add-off" method="post">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
             </div>
                 
         </main>
