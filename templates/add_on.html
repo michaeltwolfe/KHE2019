@@ -33,9 +33,17 @@
         <main>
             <div class="container">
                 <label>Select the zone the outlet should be added to:</label>
-                    <select>
+                    <select name="addon">
                       <option>Select a Zone</option>
+                      {{% for item in Zones %}}
+                      <option value="{{item}}">{{ item }}</option>
+                      {{% endfor %}}
                     </select>
+
+                    <br>
+
+                    <label for="outletname">Outlet Name</label>
+                    <input type="text" class="form-control" name="outletname">
 
                     <br>
 

@@ -33,11 +33,19 @@
         <main>
             <div class="container">
                 <label>Select the zone the outlet should be added to:</label>
-                <select>
-                    <option>Select a Zone</option>
-                </select>
-
-                <br>
+                    <select name="addoff">
+                        <option>Select a Zone</option>
+                        {{% for item in Zones %}}
+                        <option value="{{item}}">{{ item }}</option>
+                        {{% endfor %}}
+                    </select>
+  
+                      <br>
+  
+                      <label for="outletname">Outlet Name</label>
+                      <input type="text" class="form-control" name="outletname">
+  
+                      <br>
 
                 <hi>Click the "off" button on the remote for the corresponding outlet.</hi>
                 <form action="/add-off" method="post">
