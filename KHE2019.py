@@ -57,13 +57,9 @@ def add_zone():
     elif request.method == "POST":
         ZoneName = request.form.get("zonename")
 
-        AddZone = storage.AddZone(ZoneName)
+        storage.AddZone(ZoneName)
 
-        if AddZone is True:
-            Response = make_response(redirect("/"))
-        else:
-            Message = "Zone was not successfully added."
-            Response = make_response(render_template("add_zone.html", Message=Message))
+        Response = make_response(redirect("/"))
 
         return Response
 

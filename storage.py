@@ -24,6 +24,7 @@ def AddOnId(ZoneName, OnId, OutletName):
         NewOnId = Outlet(
             name = OutletName,
             onCode = OnId,
+            offCode = 0,
             ID = Item.ID
         )      
 
@@ -31,8 +32,7 @@ def AddOnId(ZoneName, OnId, OutletName):
     session.commit()
 
 def AddOffId(ZoneName, OffId, OutletName):
-    OutletUpdate = session.query(Outlet).filter(Outlet.name == OutletName)
-    OutletUpdate.offCode = OffId
+    session.query(Outlet).filter(Outlet.name == OutletName).update({'offCode': OffId})
 
     session.commit()
 
@@ -45,4 +45,11 @@ Other shit
 
 
 def GetZones():
-    return session.query(Zone.name).all()
+    ZonesList = []
+
+    Zones = session.query(Zone).all()
+
+    for Item in Zones:
+        ZonesList.append(Item.name)
+
+    return ZonesList

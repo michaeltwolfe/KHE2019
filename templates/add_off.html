@@ -32,12 +32,14 @@
 
         <main>
             <div class="container">
-                <label>Select the zone the outlet should be added to:</label>
+                
+                <form action="/add-off" method="post">
+                  <label>Select the zone the outlet should be added to:</label>
                     <select name="addoff">
                         <option>Select a Zone</option>
-                        {{% for item in Zones %}}
+                        {% for item in Zones %}
                         <option value="{{item}}">{{ item }}</option>
-                        {{% endfor %}}
+                        {% endfor %}
                     </select>
   
                       <br>
@@ -47,8 +49,7 @@
   
                       <br>
 
-                <hi>Click the "off" button on the remote for the corresponding outlet.</hi>
-                <form action="/add-off" method="post">
+                    <p>Click the "off" button on the remote for the corresponding outlet.</p>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
