@@ -5,10 +5,6 @@ from outlet_chatter import OutletChatter
 
 app = Flask(__name__)
 
-@app.route("/toggle-zone")
-def toggle_zone():
-    return render_template("toggle_zone.html")
-
 """""
 
 Routes to set up zones and outlets
@@ -23,7 +19,8 @@ def add_off():
     elif request.method == "POST":
         Chatter = OutletChatter()
         OffId = Chatter.GetOffId()
-        print(OffId)
+        
+        storage.AddOffId(OffId)
 
         Response = make_response(redirect("/add-off"))
         return Response
@@ -36,7 +33,8 @@ def add_on():
     elif request.method == "POST":
         Chatter = OutletChatter()
         OnId = Chatter.GetOnId()
-        print(OnId)
+        
+        storage.AddOnId(OnId)
 
         Response = make_response(redirect("/add-off"))
         return Response
@@ -52,10 +50,10 @@ def add_zone():
         AddZone = storage.AddZone(ZoneName)
 
         if AddZone is True:
-            Response = make_response(redirect("/add_on"))
+            Response = make_response(redirect("/"))
         else:
             Message = "Zone was not successfully added."
-            Response = make_response(render_template("add_on.html", Message=Message))
+            Response = make_response(render_template("add_zone.html", Message=Message))
 
         return Response
 
