@@ -10,8 +10,8 @@ session = DBSession()
 
 def AddZone(ZoneName):
     NewZone = Zone(
-        State = 0,
-        Name = ZoneName
+        state = 0,
+        name = ZoneName
     )
 
     session.add(NewZone)
@@ -36,3 +36,13 @@ def AddOffId(ZoneName, OffId, OutletName):
 
     session.commit()
 
+
+"""""
+
+Other shit
+
+"""""
+
+
+def GetZones():
+    return session.query(Zone.name).all()
