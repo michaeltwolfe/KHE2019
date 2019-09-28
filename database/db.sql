@@ -1,5 +1,3 @@
-
-
 DROP TABLE IF EXISTS Zone;
 CREATE TABLE Zone
 (
@@ -12,6 +10,7 @@ DROP TABLE IF EXISTS Outlet;
 CREATE TABLE Outlet
 (
 	name		VARCHAR(10) NOT NULL,
+	state		BOOLEAN,
 	onCode		INTEGER(7),
 	offCode		INTEGER(7),
 	ID		VARCHAR(4),
