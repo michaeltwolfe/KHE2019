@@ -35,8 +35,8 @@
   <form action="/" method="POST">
   <div class="container">
     {% for Slutters in Information %}
-    <h6>{{ Slutters.name }}</h6>
-    {% for Fuggers in Slutters %}
+    <h6>{{ Slutters.zone }}</h6>
+    {% for Fuggers in Slutters.zoneOutlets %}
     <div class="card">
       <table>
         <tr class="card-body">
@@ -45,7 +45,7 @@
         <tr class="card-body">
           <td class="card-text">
               <label class="switch">
-              <input type="checkbox" class="checkboxZone5" name="OnOffSwitch" id="{{Fuggers}}" value="{{Slutters}};{{Fuggers}}" onChange="this.form.submit()">
+              <input type="checkbox" class="checkbox{{ Slutters.zone }}" name="OnOffSwitch" id="{{Fuggers}}" value="{{Slutters.zone}};{{Fuggers}}" onChange="this.form.submit()">
               <span class="slider round"></span>
               </label>
           </td>
@@ -56,20 +56,20 @@
     <br>
     <h7>All In Zone</h7>
       <label class="switch">
-          <input type="checkbox" id="checkall{{Slutters.name}}" name="OnOffSwitch" value="{{Slutters}};All" onChange="this.form.submit()">
+          <input type="checkbox" id="checkall{{Slutters.zone}}" name="OnOffSwitch" value="{{Slutters.zone}};All" onChange="this.form.submit()">
           <span class="slider round"></span>
           </label>
           <script type='text/javascript'>
             $(document).ready(function(){
               // Check or Uncheck All checkboxes
-              $("#checkall{{Slutters}}").change(function(){
+              $("#checkall{{Slutters.zone}}").change(function(){
                 var checked = $(this).is(':checked');
                 if(checked){
-                  $(".checkbox{{Slutters}}").each(function(){
+                  $(".checkbox{{Slutters.zone}}").each(function(){
                     $(this).prop("checked",true);
                   });
                 }else{
-                  $(".checkbox{{Slutters}}").each(function(){
+                  $(".checkbox{{Slutters.zone}}").each(function(){
                     $(this).prop("checked",false);
                   });
                 }
@@ -78,10 +78,10 @@
              // Changing state of CheckAll checkbox 
              $(".checkbox").click(function(){
             
-               if($(".checkbox{{Slutters}}").length == $(".checkbox{{Slutters}}:checked").length) {
-                 $("#checkall{{Slutters}}").prop("checked", true);
+               if($(".checkbox{{Slutters.zone}}").length == $(".checkbox{{Slutters.zone}}:checked").length) {
+                 $("#checkall{{Slutters.zone}}").prop("checked", true);
                } else {
-                 $("#checkall{{Slutters}}").removeAttr("checked");
+                 $("#checkall{{Slutters.zone}}").removeAttr("checked");
                }
            
              });
