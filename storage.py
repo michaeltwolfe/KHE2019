@@ -67,7 +67,7 @@ def GetLandingPageInformation():
             Outlets = session.query(Outlet).filter(Outlet.ID == Id.ID)
 
         for Names in Outlets:
-                OutletsList.append(Names.name)
+                OutletsList.append(OutletItem = {"name": Names.name, "State": Names.state})
 
         ZoneDict = {
             "zone": Item,
