@@ -45,7 +45,7 @@
         <tr class="card-body">
           <td class="card-text">
               <label class="switch">
-              <input type="checkbox" class="checkbox{{ Slutters.zone }}" name="OnOffSwitch" id="{{Fuggers}}" value="{{Slutters.zone}};{{Fuggers}}" onChange="this.form.submit()">
+              <input type="checkbox" class="checkbox{{ Slutters.zone }}" name="OnOffSwitch" id="{{Fuggers}}" value="{{Slutters.zone}};{{Fuggers}}" onChange="this.form.submit()" {% if {{  }}=="1" %}checked="checked"{% else %}{% endif %}/>
               <span class="slider round"></span>
               </label>
           </td>
@@ -56,7 +56,7 @@
     <br>
     <h7>All In Zone</h7>
       <label class="switch">
-          <input type="checkbox" id="checkall{{Slutters.zone}}" name="OnOffSwitch" value="{{Slutters.zone}};All" onChange="this.form.submit()">
+          <input type="checkbox" id="checkall{{Slutters.zone}}" name="OnOffSwitch" value="{{Slutters.zone}};All" onChange="this.form.submit()" {% if {{  }}=="1" %}checked="checked"{% else %}{% endif %}>
           <span class="slider round"></span>
           </label>
           <script type='text/javascript'>
