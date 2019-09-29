@@ -1,3 +1,4 @@
+  
 from flask import Flask, render_template, request, make_response, redirect
 import storage
 from outlet_chatter import OutletChatter
@@ -63,7 +64,7 @@ def add_zone():
 
         return Response
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'GET':
         ZoneInformation = storage.GetLandingPageInformation()

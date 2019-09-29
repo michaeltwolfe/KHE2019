@@ -12,7 +12,7 @@ class OutletChatter:
     def GetOnId(self):
         with open("IdLog.txt") as File:
             Data = File.readlines()
-
+            
         Data = Data[-1].split(' ')
         return Data[1]
 
