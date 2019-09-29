@@ -1,7 +1,7 @@
 #Created by: Mike Wolfe
 
-import subprocess
 import sys
+import os
 
 class OutletChatter:
 
@@ -25,7 +25,7 @@ class OutletChatter:
     
     #on/off duh!
     def TurnOnOutlet(self, OutletId):
-        pass
+        os.system("/home/pi/rfoutlet/codesend " + str(OutletId) + " -1 200~")
 
     def TurnOffOutlet(self, OutletId):
-        pass
+        os.system("/home/pi/rfoutlet/codesend " + str(OutletId) + " -1 200~")

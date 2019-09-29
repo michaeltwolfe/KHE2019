@@ -66,9 +66,12 @@ def add_zone():
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    if request.method == "GET":
-        return render_template('index.html')
-    elif request.method == "POST":
+    if request.method == 'GET':
+        ZoneInformation = storage.GetLandingPageInformation()
+
+        Response = make_response(render_template("index.html", Information=ZoneInformation))
+        return Response
+    elif request.method == 'POST':
         values = request.form.getlist("OnOffSwitch")
         for item in values:
             print(item)

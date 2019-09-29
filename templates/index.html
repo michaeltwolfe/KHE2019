@@ -18,7 +18,7 @@
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="add-on">Add An Outlet</a>
+                <a class="nav-link" href="/add-on">Add An Outlet</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/add-zone">Add A Zone</a>
@@ -30,53 +30,46 @@
 
 <br><br>
 
+<!--I get hiiiiiiigh!!!-->
 <main>
   <form action="/" method="POST">
   <div class="container">
-    <h6>Zone 5</h6>
+    {% for Slutters in Information %}
+    <h6>{{ Slutters.zone }}</h6>
+    {% for Fuggers in Slutters.zoneOutlets %}
     <div class="card">
       <table>
         <tr class="card-body">
-          <td class="card-title">Reading Lamp</td>
+          <td class="card-title">{{ Fuggers }}</td>
         </tr>
         <tr class="card-body">
           <td class="card-text">
               <label class="switch">
-              <input type="checkbox" class="checkboxZone5" name="OnOffSwitch" id="ReadingLamp" value="Zone5;ReadingLamp" onChange="this.form.submit()">
+              <input type="checkbox" class="checkbox{{ Slutters.zone }}" name="OnOffSwitch" id="{{Fuggers}}" value="{{Slutters.zone}};{{Fuggers}}" onChange="this.form.submit()">
               <span class="slider round"></span>
               </label>
           </td>
         </tr>
-        <tr class="card-body">
-            <td class="card-title">Radio</td>
-        </tr>
-          <tr class="card-body">
-            <td class="card-text">
-                <label class="switch">
-                <input type="checkbox" class="checkboxZone5" name="OnOffSwitch" id="Radio" value="Zone5;Radio" onChange="this.form.submit()">
-                <span class="slider round"></span>
-                </label>
-            </td>
-          </tr>
       </table>
     </div>
+    {% endfor %}
     <br>
     <h7>All In Zone</h7>
       <label class="switch">
-          <input type="checkbox" id="checkallZone5" name="OnOffSwitch" value="Zone5;All" onChange="this.form.submit()">
+          <input type="checkbox" id="checkall{{Slutters.zone}}" name="OnOffSwitch" value="{{Slutters.zone}};All" onChange="this.form.submit()">
           <span class="slider round"></span>
           </label>
           <script type='text/javascript'>
             $(document).ready(function(){
               // Check or Uncheck All checkboxes
-              $("#checkallZone5").change(function(){
+              $("#checkall{{Slutters.zone}}").change(function(){
                 var checked = $(this).is(':checked');
                 if(checked){
-                  $(".checkboxZone5").each(function(){
+                  $(".checkbox{{Slutters.zone}}").each(function(){
                     $(this).prop("checked",true);
                   });
                 }else{
-                  $(".checkboxZone5").each(function(){
+                  $(".checkbox{{Slutters.zone}}").each(function(){
                     $(this).prop("checked",false);
                   });
                 }
@@ -85,16 +78,18 @@
              // Changing state of CheckAll checkbox 
              $(".checkbox").click(function(){
             
-               if($(".checkboxZone5").length == $(".checkboxZone5:checked").length) {
-                 $("#checkallZone5").prop("checked", true);
+               if($(".checkbox{{Slutters.zone}}").length == $(".checkbox{{Slutters.zone}}:checked").length) {
+                 $("#checkall{{Slutters.zone}}").prop("checked", true);
                } else {
-                 $("#checkallZone5").removeAttr("checked");
+                 $("#checkall{{Slutters.zone}}").removeAttr("checked");
                }
            
              });
            });
-           </script>     
-  </form>
+           </script>
+        {% endfor %} 
+           </div>    
+   </form>
 </main>
 
 </body>
